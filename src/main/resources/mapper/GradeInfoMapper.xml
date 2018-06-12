@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhihuishu.questionnaire.questionnaireboot.mapper.GradeInfoMapper">
+
+    <resultMap id="GradeInfoMap" type="com.zhihuishu.questionnaire.questionnaireboot.model.GradeVO">
+        <id column="ID" jdbcType="INTEGER" property="id" />
+        <result column="USER_ID" jdbcType="INTEGER" property="userId" />
+        <result column="RECRUIT_ID" jdbcType="INTEGER" property="recruitId" />
+        <result column="GRADE" jdbcType="INTEGER" property="grade" />
+        <result column="COMMENT" jdbcType="VARCHAR" property="comment" javaType="java.lang.String"/>
+        <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" javaType="java.lang.String" />
+    </resultMap>
+
+    <select id="getGradeInfoByUserId" resultMap="GradeInfoMap">
+        SELECT ID,USER_ID,RECRUIT_ID,GRADE,COMMENT,CREATE_TIME FROM tbl_fa_grade WHERE
+        USER_ID = #{userId} AND RECRUIT_ID = #{recruitId} AND IS_DELETE = 0
+    </select>
+
+</mapper>
